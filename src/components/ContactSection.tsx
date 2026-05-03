@@ -2,7 +2,13 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Send, Calendar, ArrowRight, Loader2 } from "lucide-react";
 import { toast } from "sonner";
-import { supabase } from "@/integrations/supabase/client";
+
+const GOOGLE_FORM_URL = import.meta.env.VITE_GOOGLE_FORM_URL;
+const GOOGLE_FORM_NAME_ENTRY = import.meta.env.VITE_GOOGLE_FORM_NAME_ENTRY;
+const GOOGLE_FORM_EMAIL_ENTRY = import.meta.env.VITE_GOOGLE_FORM_EMAIL_ENTRY;
+const GOOGLE_FORM_COMPANY_ENTRY = import.meta.env.VITE_GOOGLE_FORM_COMPANY_ENTRY;
+const GOOGLE_FORM_SERVICE_ENTRY = import.meta.env.VITE_GOOGLE_FORM_SERVICE_ENTRY;
+const GOOGLE_FORM_MESSAGE_ENTRY = import.meta.env.VITE_GOOGLE_FORM_MESSAGE_ENTRY;
 
 const serviceOptions = [
   "Finance & Accounting",
@@ -43,21 +49,18 @@ const ContactSection = () => {
 
     setIsSubmitting(true);
     try {
-      const { data, error } = await supabase.functions.invoke(
-        "handle-contact-form",
-        {
-          body: {
-            name: form.name.trim(),
-            email: form.email.trim(),
-            company: form.company.trim(),
-            service: form.service,
-            message: form.message.trim(),
-            honeypot: form.honeypot,
-          },
-        }
-      );
+      const formData = new FormData();
+      formData.append(GOOGLE_FORM_NAME_ENTRY, form.name.trim());
+      formData.append(GOOGLE_FORM_EMAIL_ENTRY, form.email.trim());
+      formData.append(GOOGLE_FORM_COMPANY_ENTRY, form.company.trim());
+      formData.append(GOOGLE_FORM_SERVICE_ENTRY, form.service);
+      formData.append(GOOGLE_FORM_MESSAGE_ENTRY, form.message.trim());
 
-      if (error) throw error;
+      await fetch(GOOGLE_FORM_URL, {
+        method: 'POST',
+        body: formData,
+        mode: 'no-cors'
+      });
 
       toast.success(
         "✅ Request received. Get ready—our team will connect with you shortly to explore how we can reduce costs, improve efficiency, and accelerate your growth."
@@ -74,7 +77,7 @@ const ContactSection = () => {
     } catch (err) {
       console.error("Submission error:", err);
       toast.error(
-        "⚠️ Something didn't go as planned. Please try again or email us directly at contact@aaccelbpmm.com—we'll make sure your request reaches us."
+        "⚠️ Something didn't go as planned. Please try again or email us directly at contact@accelbpmm.com—we'll make sure your request reaches us."
       );
     } finally {
       setIsSubmitting(false);
