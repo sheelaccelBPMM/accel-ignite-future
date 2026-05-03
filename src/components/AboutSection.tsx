@@ -14,8 +14,8 @@ const AboutSection = () => (
             About <span className="text-gradient-primary">AccelBPMM</span>
           </h2>
           <p className="mt-6 text-muted-foreground leading-relaxed">
-            AccelBPMM was founded by seasoned leaders from Accenture, Deloitte,
-            and leading global consulting firms with one mission: bring
+            AccelBPMM was founded by seasoned leaders from Accenture, Genpact
+            and other leading global consulting firms with one mission: bring
             enterprise-grade transformation to small and mid-sized businesses
             at a cost they can actually afford.
           </p>
@@ -33,8 +33,8 @@ const AboutSection = () => (
           className="space-y-6"
         >
           {[
-            { icon: Award, title: "Ex-Big 4 Leadership", desc: "Our leadership team brings decades of experience from the world's top consulting firms." },
-            { icon: MapPin, title: "India-based Delivery", desc: "Scalable, cost-efficient delivery without compromising quality or speed." },
+            { icon: Award, title: "Experienced Leadership", desc: "Our leadership team brings decades of experience from the world's top consulting firms." },
+            { icon: MapPin, title: "Offshore Delivery", desc: "Scalable, cost-efficient delivery without compromising quality or speed." },
             { icon: Target, title: "SME-Focused Mission", desc: "Every solution is designed for the agility and budget of small and mid-sized enterprises." },
           ].map((item, i) => (
             <div key={i} className="flex gap-4 rounded-xl border border-border bg-card p-6">

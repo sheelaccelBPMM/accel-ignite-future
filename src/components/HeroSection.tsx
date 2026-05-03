@@ -19,7 +19,7 @@ const HeroSection = () => (
       >
         <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-glow bg-secondary/50 px-4 py-1.5 text-sm text-muted-foreground">
           <Sparkles size={14} className="text-primary" />
-          AI-Powered Transformation for SMEs
+          Intelligent Transformation for SMEs
         </div>
 
         <h1 className="font-display text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-7xl">
@@ -28,8 +28,9 @@ const HeroSection = () => (
         </h1>
 
         <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground lg:text-xl">
-          AccelBPMM helps U.S. SMEs transform faster, reduce costs, and scale
-          with AI-powered operations—delivered from India.
+          <b className="text-foreground">AccelBPMM - Accelerate Business Process Modernization & Management.</b> 
+          We empower U.S. SMEs to modernize processes, streamline operations, and grow efficiently, leveraging 
+          our India‑based Capacity Utilization approach to deliver scalable, intelligent, and cost‑effective solutions built for real‑world performance.
         </p>
 
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">

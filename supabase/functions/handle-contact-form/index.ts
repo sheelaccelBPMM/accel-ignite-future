@@ -8,6 +8,12 @@ const corsHeaders = {
 };
 
 const CONTACT_EMAIL = "contact@aaccelbpmm.com";
+const GOOGLE_FORM_URL = Deno.env.get("GOOGLE_FORM_URL");
+const GOOGLE_FORM_NAME_ENTRY = Deno.env.get("GOOGLE_FORM_NAME_ENTRY");
+const GOOGLE_FORM_EMAIL_ENTRY = Deno.env.get("GOOGLE_FORM_EMAIL_ENTRY");
+const GOOGLE_FORM_COMPANY_ENTRY = Deno.env.get("GOOGLE_FORM_COMPANY_ENTRY");
+const GOOGLE_FORM_SERVICE_ENTRY = Deno.env.get("GOOGLE_FORM_SERVICE_ENTRY");
+const GOOGLE_FORM_MESSAGE_ENTRY = Deno.env.get("GOOGLE_FORM_MESSAGE_ENTRY");
 
 interface ContactForm {
   name: string;
@@ -136,6 +142,44 @@ serve(async (req) => {
       console.log("RESEND_API_KEY not configured. Emails not sent. Submission stored in database.");
       console.log("Notification email would be sent to:", CONTACT_EMAIL);
       console.log("Auto-response would be sent to:", body.email);
+    }
+
+    if (
+      GOOGLE_FORM_URL &&
+      GOOGLE_FORM_NAME_ENTRY &&
+      GOOGLE_FORM_EMAIL_ENTRY &&
+      GOOGLE_FORM_COMPANY_ENTRY &&
+      GOOGLE_FORM_SERVICE_ENTRY &&
+      GOOGLE_FORM_MESSAGE_ENTRY
+    ) {
+      try {
+        const googleFormParams = new URLSearchParams();
+        googleFormParams.append(GOOGLE_FORM_NAME_ENTRY, body.name.trim());
+        googleFormParams.append(GOOGLE_FORM_EMAIL_ENTRY, body.email.trim());
+        googleFormParams.append(GOOGLE_FORM_COMPANY_ENTRY, body.company?.trim() || "");
+        googleFormParams.append(GOOGLE_FORM_SERVICE_ENTRY, body.service.trim());
+        googleFormParams.append(GOOGLE_FORM_MESSAGE_ENTRY, body.message.trim());
+
+        const gformResponse = await fetch(GOOGLE_FORM_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: googleFormParams.toString(),
+        });
+
+        if (!gformResponse.ok && gformResponse.status !== 302) {
+          console.error(
+            "Google Forms submission failed:",
+            gformResponse.status,
+            await gformResponse.text()
+          );
+        }
+      } catch (googleFormError) {
+        console.error("Google Forms submission error:", googleFormError);
+      }
+    } else {
+      console.log("Google Forms variables not configured. Skipping Google Forms forwarding.");
     }
 
     return new Response(

@@ -12,13 +12,13 @@ const services = [
     icon: Headphones,
     title: "Customer Support",
     what: "AI-augmented omnichannel support — voice, chat, email, and social — with intelligent routing and sentiment analysis.",
-    outcomes: ["40% faster resolution", "24/7 coverage", "Higher CSAT scores"],
+    outcomes: ["Upto 40% faster resolution", "24/7 coverage", "Higher CSAT scores"],
   },
   {
     icon: Scale,
     title: "Legal Process Outsourcing",
-    what: "E-filing, document retrieval, mailbox support, and compliance monitoring for law firms and corporate legal teams.",
-    outcomes: ["60% cost savings", "Faster turnaround times", "Reduced compliance risk"],
+    what: "E-filing, complaint drafting, mailbox support, compliance monitoring and much more for law firms and corporate legal teams.",
+    outcomes: ["Upto 60% cost savings", "Faster turnaround times", "Reduced compliance risk"],
   },
   {
     icon: Search,

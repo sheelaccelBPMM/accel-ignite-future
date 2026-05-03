@@ -2,8 +2,8 @@ import { motion } from "framer-motion";
 import { Shield, Cpu, Globe } from "lucide-react";
 
 const items = [
-  { icon: Shield, text: "Built by leaders from Accenture, Deloitte & global consulting firms" },
-  { icon: Cpu, text: "AI-first approach with proven transformation frameworks" },
+  { icon: Shield, text: "Built by leaders from Accenture, Genpact & other global consulting firms" },
+  { icon: Cpu, text: "Intelligent approach with proven transformation frameworks" },
   { icon: Globe, text: "Offshore efficiency with onshore alignment" },
 ];
 

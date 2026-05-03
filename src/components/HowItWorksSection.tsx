@@ -18,7 +18,7 @@ const steps = [
     icon: RotateCcw,
     num: "03",
     title: "Run & Reinvent",
-    desc: "Continuous operations management with ongoing AI-driven optimization and reinvention.",
+    desc: "Continuous operations management with ongoing intelligent optimization and reinvention through our Quality Gate system.",
   },
 ];
 

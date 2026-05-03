@@ -2,11 +2,11 @@ import { motion } from "framer-motion";
 import { DollarSign, Zap, Brain, Globe, RefreshCw } from "lucide-react";
 
 const points = [
-  { icon: DollarSign, title: "40–60% Cost Advantage", desc: "Enterprise-grade delivery at a fraction of onshore costs." },
-  { icon: Zap, title: "8–12 Week Cycles", desc: "Rapid transformation sprints, not year-long programs." },
-  { icon: Brain, title: "AI-First Delivery", desc: "Every engagement is powered by AI and intelligent automation." },
-  { icon: Globe, title: "Offshore + Onshore", desc: "India-based delivery with U.S.-aligned communication and governance." },
-  { icon: RefreshCw, title: "Continuous Reinvention", desc: "Ongoing optimization, not one-time projects." },
+  { icon: DollarSign, title: "Upto 60% Cost Advantage", desc: "Enterprise-grade delivery at a fraction of onshore costs." },
+  { icon: Zap, title: "2-4 Week Onboarding Cycle", desc: "Rapid transformation sprints, not year-long programs." },
+  { icon: Brain, title: "Intelligent Delivery", desc: "Every engagement is powered by intelligent automation systems." },
+  { icon: Globe, title: "Offshore + Onshore", desc: "India-based delivery with US-aligned communication and governance." },
+  { icon: RefreshCw, title: "Continuous Reinvention", desc: "Ongoing optimization, not one-time projects using our Quality Gate system." },
 ];
 
 const DifferentiatorSection = () => (

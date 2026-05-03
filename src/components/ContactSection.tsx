@@ -131,7 +131,7 @@ const ContactSection = () => {
                 <div>
                   <div className="font-semibold text-foreground">Email Us</div>
                   <div className="text-sm text-muted-foreground">
-                    contact@aaccelbpmm.com
+                    contact@accelbpmm.com
                   </div>
                 </div>
                 <ArrowRight
@@ -208,8 +208,18 @@ const ContactSection = () => {
               />
               <select
                 value={form.service}
-                onChange={(e) => setForm({ ...form, service: e.target.value })}
-                className={inputClass("service")}
+                onChange={(e) => {
+                  setForm({ ...form, service: e.target.value });
+                  if (errors.service) setErrors({ ...errors, service: "" });
+                }}
+                className={`${inputClass("service")} appearance-none pr-10 cursor-pointer`}
+                style={{
+                  backgroundImage:
+                    "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='none' stroke='%23666' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.8' d='M6 8l4 4 4-4'/%3E%3C/svg%3E\")",
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "right 1rem center",
+                  backgroundSize: "1.15em",
+                }}
               >
                 <option value="" disabled>
                   Service Interest
