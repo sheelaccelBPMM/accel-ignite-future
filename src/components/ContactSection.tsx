@@ -32,6 +32,15 @@ const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
+  // Add this function to handle smooth scrolling
+  const scrollToSection = (href: string) => {
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const validate = () => {
     const newErrors: Record<string, string> = {};
     if (!form.name.trim()) newErrors.name = "Name is required";
@@ -109,8 +118,11 @@ const ContactSection = () => {
 
             <div className="mt-8 space-y-4">
               <a
-                href="#contact"
-                className="flex items-center gap-3 rounded-xl border border-border bg-card p-5 transition-all hover:border-primary/30"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection('#contact');
+                }}
+                className="flex items-center gap-3 rounded-xl border border-border bg-card p-5 transition-all hover:border-primary/30 cursor-pointer"
               >
                 <Calendar size={20} className="text-primary" />
                 <div>
@@ -127,7 +139,7 @@ const ContactSection = () => {
                 />
               </a>
               <a
-                href="mailto:contact@aaccelbpmm.com"
+                href="mailto:contact@accelbpmm.com"
                 className="flex items-center gap-3 rounded-xl border border-border bg-card p-5 transition-all hover:border-primary/30"
               >
                 <Send size={20} className="text-primary" />

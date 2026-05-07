@@ -13,6 +13,14 @@ const navLinks = [
 const Navbar = () => {
   const [open, setOpen] = useState(false);
 
+  const scrollToSection = (href: string) => {
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass">
       <div className="container mx-auto flex items-center justify-between py-4 px-4 lg:px-8">
@@ -24,15 +32,21 @@ const Navbar = () => {
           {navLinks.map((link) => (
             <a
               key={link.href}
-              href={link.href}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection(link.href);
+              }}
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
             >
               {link.label}
             </a>
           ))}
           <a
-            href="#contact"
-            className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-90 transition-opacity"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection('#contact');
+            }}
+            className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-90 transition-opacity cursor-pointer"
           >
             Book a Consultation
           </a>
@@ -55,17 +69,23 @@ const Navbar = () => {
               {navLinks.map((link) => (
                 <a
                   key={link.href}
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection(link.href);
+                    setOpen(false);
+                  }}
+                  className="text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
                 >
                   {link.label}
                 </a>
               ))}
               <a
-                href="#contact"
-                onClick={() => setOpen(false)}
-                className="rounded-lg bg-primary px-5 py-3 text-center text-sm font-semibold text-primary-foreground"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection('#contact');
+                  setOpen(false);
+                }}
+                className="rounded-lg bg-primary px-5 py-3 text-center text-sm font-semibold text-primary-foreground cursor-pointer"
               >
                 Book a Consultation
               </a>
