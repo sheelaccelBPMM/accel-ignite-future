@@ -24,6 +24,7 @@ const Index = () => (
     <FutureReadySection />
     <CaseStudiesSection />
     <AboutSection />
+    <PricingSection />
     <ContactSection />
     <Footer />
   </div>
