@@ -8,6 +8,7 @@ import HowItWorksSection from "@/components/HowItWorksSection";
 import FutureReadySection from "@/components/FutureReadySection";
 import CaseStudiesSection from "@/components/CaseStudiesSection";
 import AboutSection from "@/components/AboutSection";
+import PricingSection from "@/components/PricingSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
